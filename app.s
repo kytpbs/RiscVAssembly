@@ -1,30 +1,22 @@
 .data
-	int: .word 6
-	odd_string: .asciz "odd"
-	even_string: .asciz "even"
-
+	.asciz "Please enter your year of birth\n" # 0x10010 #32 chars
 
 .text
-.globl _start
-_start:
-_prepare_values:
-	lw a0, int # load the integer
-	# is 0b01 which means if the last bit is 1 it will return one, if its 0 it will return 0
-	andi a0, a0, 1 # a0 & 0b01
-	li t0, 1
-	beq a0, t0, _is_even # if a0 (our number) == 0 then go to _is_even
-	# we didn't branch to is_odd which means its even
-_is_odd:
-	la a0, odd_string
-	j _print
-_is_even:
-	la a0, even_string 
-_print:
-	ori
-	li a7, 4 # printString -> print a0
+	lui a0, 0x10010
+	li, a7, 4 # print string -> prints a0 until null
+	ecall
+
+_read_value:
+	li a7, 5 # ReadInt -> outputs to a0
+	ecall
+
+_print_age:
+	li t1, 2025
+	sub a0, t1, a0
+	li a7, 1 # PrintInt -> prints a0
 	ecall
 
 _exit:
-	li a7, 93 # syscall exit
-	li a0, 0 # exit code
+	li a0, 0            # exit code
+	li a7, 93           # syscall exit
 	ecall

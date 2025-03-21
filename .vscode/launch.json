@@ -1,0 +1,11 @@
+{
+    "configurations": [
+    {
+        "name": "Run Risc-V Assembly",
+        "type": "PowerShell",
+        "request": "launch",
+        "script": "./run.ps1",
+        "cwd": "${workspaceFolder}"
+    }
+    ]
+}

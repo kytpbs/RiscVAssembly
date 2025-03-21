@@ -1,5 +1,5 @@
 $ErrorActionPreference = "Stop"
 
-clang --target=riscv64 -march=rv64gc -mabi=lp64d -mno-relax hello.s -c -o build/hello.o
-ld.lld build/hello.o -o build/hello.x
-wsl qemu-riscv64 ./build/hello.x
+clang --target=riscv64 -march=rv64gc -mabi=lp64d -mno-relax app.s -c -o build/app.o
+ld.lld build/app.o -o build/app.x
+wsl qemu-riscv64 ./build/app.x

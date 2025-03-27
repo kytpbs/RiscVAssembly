@@ -8,13 +8,12 @@ inline int readInt();
 int main() {
     printString("Input a number: ");
 
-    int val1 = readInt();
-    int val2 = readInt();
-    if (val1 > val2) {
-        printInt(val1);
-    } else {
-        printInt(val2);
+    int countUp = readInt();
+    int sum = 0;
+    for (int i = 1; i <= countUp; i++) {
+        sum += i;
     }
+    printInt(sum);
 }
 
 inline int readInt() {
